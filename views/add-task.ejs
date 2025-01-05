@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="/style-add.css">
+</head>
+
+<body>
+    <h1>Add your task here...</h1>
+    <section class="input-data">
+        <form action="/add-task" method="post">
+            <div class="name">
+                <label for="name">Enter the description of work : </label>
+                <textarea name="name" id="name" rows="1"></textarea>
+            </div>
+
+            <div class="priority-select">
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority">
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                </select>
+            </div>
+
+            <div class="date">
+                <label for="date">Enter deadline date</label>
+                <input type="date" id="date" name="deadline">
+            </div>
+            <button type="submit">Add Task</button>
+        </form>
+
+    </section>
+
+
+</body>
+
+</html>

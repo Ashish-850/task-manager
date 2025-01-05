@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/style-home.css">
+</head>
+
+<body>
+    <h1>Organize your tasks efficiently!</h1>
+    <h2>Here are the pending tasks....</h2>
+    <% if (tasks.length===0) { %>
+        <p class="no-task-message">No tasks yet</p>
+        <% } else { %>
+            <table>
+                <tr>
+                    <th>Work Description</th>
+                    <th>Priority</th>
+                    <th>Deadline</th>
+                    <th>Actions</th> <!-- Action column for Edit and Delete -->
+                </tr>
+                <% for (let task of tasks) { %>
+                    <tr>
+                        <td>
+                            <%= task.name %>
+                        </td>
+                        <td>
+                            <%= task.priority %>
+                        </td>
+                        <td>
+                            <%= task.deadline %>
+                        </td>
+                        <td class="action-links">
+                            <!-- Edit and Delete links -->
+                            <form action="/edit-task/<%= task.id %>" style="display:inline;">
+                                <input type="hidden" name="_method" value="Edit">
+                                <button type="submit">Edit</button>
+
+                            </form>
+                            <!-- <a class="edit-link" href="/edit-task/<%= task.id %>">Edit</a> -->
+                            <form action="/delete-task/<%= task.id %>?_method=DELETE" method="POST"
+                                style="display:inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </table>
+            <% } %>
+
+                <form action="/add-task" method="get">
+                    <button type="submit">Add New Task</button>
+                </form>
+</body>
+
+</html>

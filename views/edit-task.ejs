@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/style-edit.css">
+</head>
+
+<body>
+    <h1>Edit your task here....</h1>
+    <form action="/edit-task/<%= details.id %>?_method=PATCH" method="POST">
+        <div class="name">
+            <label for="name">Work Description</label>
+            <textarea name="name" id="name" rows="2"><%= details.name %></textarea>
+        </div>
+
+        <div class="priority-select">
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+                <option value="low" <%= details.priority === 'low' ? 'selected' : '' %>>low</option>
+                <option value="medium" <%= details.priority === 'medium' ? 'selected' : '' %>>medium</option>
+                <option value="high" <%= details.priority === 'high' ? 'selected' : '' %>>high</option>
+            </select>
+        </div>
+
+        <div class="date">
+            <label for="date">Enter deadline date</label>
+            <input type="date" id="date" name="deadline" value="<%= details.deadline %>">
+        </div>
+
+        <button type="submit">Save Task</button>
+    </form>
+</body>
+
+</html>
